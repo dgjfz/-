@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>קביעת תור בקופת חולים</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #f9f9f9;
+      color: #333;
+      direction: rtl;
+    }
+    h1 {
+      text-align: center;
+      color: #006699;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    select, input[type="text"], input[type="date"], input[type="time"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 12px;
+      background-color: #006699;
+      color: white;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #004466;
+    }
+    .message {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      border-radius: 6px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>קביעת תור בקופת חולים</h1>
+
+  <form id="appointmentForm">
+    <label for="clinic">בחר קופת חולים:</label>
+    <select id="clinic" name="clinic" required>
+      <option value="">-- בחר --</option>
+      <option value="כללית">כללית</option>
+      <option value="מאוחדת">מאוחדת</option>
+      <option value="מכבי">מכבי</option>
+      <option value="לאומית">לאומית</option>
+    </select>
+
+    <label for="date">בחר תאריך:</label>
+    <input type="date" id="date" name="date" required min="" />
+
+    <label for="time">בחר שעה:</label>
+    <input type="time" id="time" name="time" required />
+
+    <label for="idNumber">הכנס מספר זהות:</label>
+    <input type="text" id="idNumber" name="idNumber" pattern="\d{7,9}" title="הכנס מספר זהות תקין (7-9 ספרות)" required />
+
+    <button type="submit">קבע תור</button>
+  </form>
+
+  <div class="message" id="successMessage">התור נקבע בהצלחה!</div>
+
+  <script>
+    // קביעת תאריך מינימלי לתאריך של היום
+    const dateInput = document.getElementById('date');
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+
+    const form = document.getElementById('appointmentForm');
+    const successMessage = document.getElementById('successMessage');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // כאן אפשר להוסיף בדיקות נוספות, שליחה לשרת וכו'
+      // כרגע פשוט מציגים הודעה שהכל תקין
+
+      successMessage.style.display = 'block';
+      form.reset();
+    });
+  </script>
+</body>
+</html>
