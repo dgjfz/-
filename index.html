@@ -1,106 +1,136 @@
+
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <title>קביעת תור בקופת חולים</title>
+  <title>קופות החולים בישראל</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      max-width: 600px;
-      margin: 30px auto;
-      padding: 20px;
-      background: #f9f9f9;
-      color: #333;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f3f4f6;
       direction: rtl;
     }
-    h1 {
-      text-align: center;
-      color: #006699;
-    }
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
-    select, input[type="text"], input[type="date"], input[type="time"] {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      box-sizing: border-box;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-    }
-    button {
-      margin-top: 25px;
-      width: 100%;
-      padding: 12px;
-      background-color: #006699;
+
+    header {
+      background: #4a90e2;
       color: white;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
+      padding: 30px 20px;
+      text-align: center;
     }
-    button:hover {
-      background-color: #004466;
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
     }
-    .message {
-      margin-top: 20px;
-      padding: 15px;
-      background-color: #d4edda;
-      color: #155724;
-      border: 1px solid #c3e6cb;
+
+    header p {
+      margin: 5px 0 0;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      text-align: center;
+      padding: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      height: 80px;
+      margin-bottom: 15px;
+    }
+
+    .card h2 {
+      margin: 10px 0 5px;
+      font-size: 1.4rem;
+      color: #333;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #666;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 20px;
+      text-decoration: none;
+      background: #4a90e2;
+      color: white;
       border-radius: 6px;
-      display: none;
+      transition: background-color 0.3s;
+    }
+
+    .card a:hover {
+      background-color: #357ab8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #eee;
+      font-size: 0.9rem;
+      color: #444;
     }
   </style>
 </head>
 <body>
-  <h1>קביעת תור בקופת חולים</h1>
 
-  <form id="appointmentForm">
-    <label for="clinic">בחר קופת חולים:</label>
-    <select id="clinic" name="clinic" required>
-      <option value="">-- בחר --</option>
-      <option value="כללית">כללית</option>
-      <option value="מאוחדת">מאוחדת</option>
-      <option value="מכבי">מכבי</option>
-      <option value="לאומית">לאומית</option>
-    </select>
+<header>
+  <h1>קופות החולים בישראל</h1>
+  <p>בחר קופה וצא לאתר הרשמי שלה</p>
+</header>
 
-    <label for="date">בחר תאריך:</label>
-    <input type="date" id="date" name="date" required min="" />
+<main class="container">
+  <div class="card" style="border-top: 6px solid #00a3e0;">
+    <img src="https://upload.wikimedia.org/wikipedia/he/thumb/b/b6/Clalit_Health_Services_logo.svg/320px-Clalit_Health_Services_logo.svg.png" alt="כללית">
+    <h2>כללית</h2>
+    <p>שירותי בריאות כללית – הקופה הגדולה בישראל</p>
+    <a href="https://www.clalit.co.il" target="_blank">כניסה לאתר</a>
+  </div>
 
-    <label for="time">בחר שעה:</label>
-    <input type="time" id="time" name="time" required />
+  <div class="card" style="border-top: 6px solid #00b4e3;">
+    <img src="https://upload.wikimedia.org/wikipedia/he/thumb/2/28/Maccabi_Healthcare_Services_logo.svg/320px-Maccabi_Healthcare_Services_logo.svg.png" alt="מכבי">
+    <h2>מכבי</h2>
+    <p>רפואה מתקדמת בשבילך</p>
+    <a href="https://www.maccabi4u.co.il" target="_blank">כניסה לאתר</a>
+  </div>
 
-    <label for="idNumber">הכנס מספר זהות:</label>
-    <input type="text" id="idNumber" name="idNumber" pattern="\d{7,9}" title="הכנס מספר זהות תקין (7-9 ספרות)" required />
+  <div class="card" style="border-top: 6px solid #f08a24;">
+    <img src="https://upload.wikimedia.org/wikipedia/he/thumb/1/1c/Meuhedet_Logo.svg/320px-Meuhedet_Logo.svg.png" alt="מאוחדת">
+    <h2>מאוחדת</h2>
+    <p>בריאות לדרך שלך</p>
+    <a href="https://www.mac.org.il" target="_blank">כניסה לאתר</a>
+  </div>
 
-    <button type="submit">קבע תור</button>
-  </form>
+  <div class="card" style="border-top: 6px solid #009e4f;">
+    <img src="https://upload.wikimedia.org/wikipedia/he/thumb/d/d4/Leumit_Health_Services_logo.svg/320px-Leumit_Health_Services_logo.svg.png" alt="לאומית">
+    <h2>לאומית</h2>
+    <p>שירות אישי, משפחתי ומקצועי</p>
+    <a href="https://www.leumit.co.il" target="_blank">כניסה לאתר</a>
+  </div>
+</main>
 
-  <div class="message" id="successMessage">התור נקבע בהצלחה!</div>
+<footer>
+  אתר מידע בלתי רשמי - נוצר למטרות נוחות בלבד. כל הזכויות שמורות לבעלי הלוגואים והמותגים.
+</footer>
 
-  <script>
-    // קביעת תאריך מינימלי לתאריך של היום
-    const dateInput = document.getElementById('date');
-    const today = new Date().toISOString().split('T')[0];
-    dateInput.setAttribute('min', today);
-
-    const form = document.getElementById('appointmentForm');
-    const successMessage = document.getElementById('successMessage');
-
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      // כאן אפשר להוסיף בדיקות נוספות, שליחה לשרת וכו'
-      // כרגע פשוט מציגים הודעה שהכל תקין
-
-      successMessage.style.display = 'block';
-      form.reset();
-    });
-  </script>
 </body>
 </html>
