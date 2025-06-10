@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>עבודה עברית - לוח דרושים</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f7f1f1, #ffe3b3);
+    color: #333;
+  }
+  header {
+    background-color: #d84315;
+    color: white;
+    padding: 25px;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    letter-spacing: 2px;
+  }
+  nav {
+    background-color: #ff7043;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  nav a {
+    color: white;
+    margin: 5px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  nav input {
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    width: 220px;
+    font-size: 1rem;
+  }
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+  .job-form, .job-list {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    margin-bottom: 30px;
+  }
+  input, select, textarea, button {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 10px;
+    border: 1.5px solid #ccc;
+    font-size: 1.1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+  }
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #ff7043;
+    box-shadow: 0 0 5px #ff7043;
+  }
+  button {
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #388e3c;
+  }
+  .job {
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+  .job:last-child {
+    border-bottom: none;
+  }
+  .job img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 10px;
+    border: 1.5px solid #ff7043;
+    background: #fff;
+  }
+  .job-info {
+    flex-grow: 1;
+  }
+  .job-info h3 {
+    margin: 0 0 6px 0;
+    color: #d84315;
+  }
+  .job-info p {
+    margin: 4px 0;
+    line-height: 1.4;
+  }
+  .job-info a {
+    color: #4caf50;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .job-info a:hover {
+    text-decoration: underline;
+  }
+  /* סגנון לטבלת סינון */
+  .filter-section {
+    background: #fff3e0;
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(255,112,67,0.3);
+  }
+  .filter-section label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  .filter-section select,
+  .filter-section input {
+    width: auto;
+    display: inline-block;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+<header>לוח עבודה עברית</header>
+
+<nav>
+  <div>
+    <a href="#">דף הבית</a>
+    <a href="#form">פרסם משרה</a>
+  </div>
+  <div>
+    <input type="text" id="search" placeholder="חיפוש לפי תחום, אזור, טלפון, גיל ועוד..." />
+  </div>
+</nav>
+
+<div class="container">
+
+  <section class="filter-section" aria-label="סינון משרות מתקדם">
+    <h3>סינון מתקדם</h3>
+    <label for="filterRegion">אזור:</label>
+    <select id="filterRegion">
+      <option value="">הכל</option>
+      <option value="צפון">צפון</option>
+      <option value="מרכז">מרכז</option>
+      <option value="דרום">דרום</option>
+      <option value="בנימין">בנימין</option>
+      <option value="יהודה">יהודה</option>
+      <option value="שומרון">שומרון</option>
+    </select>
+
+    <label for="filterField">תחום:</label>
+    <input type="text" id="filterField" placeholder="לדוגמה: בנייה, ניקיון..." />
+
+    <label for="filterHours">סוג שעות:</label>
+    <select id="filterHours">
+      <option value="">הכל</option>
+      <option value="קבוע">קבוע</option>
+      <option value="זמני">זמני</option>
+    </select>
+
+    <label for="filterPayment">סוג תשלום:</label>
+    <select id="filterPayment">
+      <option value="">הכל</option>
+      <option value="מזומן">מזומן</option>
+      <option value="עם טפסים">עם טפסים</option>
+    </select>
+
+    <label for="filterAge">גיל מינימלי:</label>
+    <input type="number" id="filterAge" min="16" max="100" placeholder="ללא" />
+  </section>
+
+  <section id="form" class="job-form" aria-label="טופס פרסום משרה">
+    <h2>פרסם משרה</h2>
+    <form id="jobForm">
+      <input type="text" id="title" placeholder="כותרת משרה (לדוג' - פועל ניקיון)" required />
+      <select id="region" required aria-label="בחר אזור">
+        <option value="" disabled selected>בחר אזור</option>
+        <option value="צפון">צפון</option>
+        <option value="מרכז">מרכז</option>
+        <option value="דרום">דרום</option>
+        <option value="בנימין">בנימין</option>
+        <option value="יהודה">יהודה</option>
+        <option value="שומרון">שומרון</option>
+      </select>
+      <input type="text" id="field" placeholder="תחום (בנייה, ניקיון וכו')" required />
+      <input type="number" id="age" placeholder="גיל מבוקש למשרה" min="16" max="100" required />
+      <input type="text" id="phone" placeholder="מספר טלפון ליצירת קשר" required />
+      <label for="hours">סוג שעות עבודה:</label>
+      <select id="hours" required>
+        <option value="" disabled selected>בחר סוג שעות</option>
+        <option value="קבוע">קבוע</option>
+        <option value="זמני">זמני</option>
+      </select>
+      <label for="payment">סוג תשלום:</label>
+      <select id="payment" required>
+        <option value="" disabled selected>בחר סוג תשלום</option>
+        <option value="מזומן">מזומן</option>
+        <option value="עם טפסים">עם טפסים</option>
+      </select>
+      <label for="imageUpload">העלאת תמונת העסק (אופציונלי):</label>
+      <input type="file" id="imageUpload" accept="image/*" />
+      <textarea id="details" placeholder="פרטים נוספים (שעות, שכר, דרישות וכו')" rows="4"></textarea>
+      <button type="submit">פרסם</button>
+    </form>
+  </section>
+
+  <section class="job-list" aria-label="רשימת משרות">
+    <h2>משרות חדשות</h2>
+    <div id="jobsContainer">
+      <!-- כאן תופיע רשימת המשרות -->
+    </div>
+  </section>
+</div>
+
+<script>
+  const form = document.getElementById('jobForm');
+  const jobsContainer = document.getElementById('jobsContainer');
+  const searchInput = document.getElementById('search');
+
+  const filterRegion = document.getElementById('filterRegion');
+  const filterField = document.getElementById('filterField');
+  const filterHours = document.getElementById('filterHours');
+  const filterPayment = document.getElementById('filterPayment');
+  const filterAge = document.getElementById('filterAge');
+
+  const imageUpload = document.getElementById('imageUpload');
+
+  let jobs = JSON.parse(localStorage.getItem('jobs')) || [];
+
+  function renderJobs() {
+    const searchTerm = searchInput.value.trim().toLowerCase();
+    const regionFilter = filterRegion.value;
+    const fieldFilter = filterField.value.trim().toLowerCase();
+    const hoursFilter = filterHours.value;
+    const paymentFilter = filterPayment.value;
+    const ageFilter = parseInt(filterAge.value) || 0;
+
+    jobsContainer.innerHTML = '';
+
+    const filteredJobs = jobs.filter(job => {
+      const titleMatch = job.title.toLowerCase().includes(searchTerm);
+      const regionMatch = regionFilter === '' || job.region === regionFilter;
+      const fieldMatch = fieldFilter === '' || job.field.toLowerCase().includes(fieldFilter);
+      const hoursMatch = hoursFilter === '' || job.hours === hoursFilter;
+      const paymentMatch = paymentFilter === '' || job.payment === paymentFilter;
+      const ageMatch = ageFilter === 0 || parseInt
